@@ -24,20 +24,20 @@
 class Quantumvault < Formula
   desc "Post-quantum cryptography toolkit: CA, DNSSEC, S/MIME, archival, ACME, JWT, HSM bridge"
   homepage "https://quantumvault.allsecurex.com"
-  version "1.0.0"
+  version "1.0.1"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.0.0/quantumvault-v1.0.0-aarch64-apple-darwin.tar.gz"
-      sha256 "628ad423b468401dfddfe86597244fb193bd1970d2519c87f6f440373aaa870f"
+      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.0.1/quantumvault-v1.0.1-aarch64-apple-darwin.tar.gz"
+      sha256 "fe0f75b034b2472d42e8be1337ffe8c10e9a26c5ce43286af86cd64a196ac62e"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.0.0/quantumvault-v1.0.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "4a11dd87046420228d0100445830b5f808b058899cb9ca9cda9a911b50ffaf1e"
+      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.0.1/quantumvault-v1.0.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "8ab276f2e98ff694d8cc7920c8fab113ca420488eab1a2ceaddb49eeb66d1739"
     end
   end
 
