@@ -42,18 +42,17 @@ class Quantumvault < Formula
   end
 
   def install
-    # The release tarball expands into a directory named
-    # quantumvault-vX.Y.Z-<target>/. Move every binary onto $PATH.
-    bin.install Dir["quantumvault*/quantumvault"].first
-    bin.install Dir["quantumvault*/qvca"].first
-    bin.install Dir["quantumvault*/qvdnssec"].first
-    bin.install Dir["quantumvault*/qvsmime"].first
-    bin.install Dir["quantumvault*/qvarchive"].first
-    bin.install Dir["quantumvault*/qvjwtproxy"].first
-    bin.install Dir["quantumvault*/qvacme-server"].first
-    bin.install Dir["quantumvault*/qvacme-client"].first
-    bin.install Dir["quantumvault*/qvhsm"].first
-    bin.install Dir["quantumvault*/quantum-scanner"].first
+    # Brew cd's into the extracted top-level directory before install runs.
+    bin.install "quantumvault"
+    bin.install "qvca"
+    bin.install "qvdnssec"
+    bin.install "qvsmime"
+    bin.install "qvarchive"
+    bin.install "qvjwtproxy"
+    bin.install "qvacme-server"
+    bin.install "qvacme-client"
+    bin.install "qvhsm"
+    bin.install "quantum-scanner"
   end
 
   test do
