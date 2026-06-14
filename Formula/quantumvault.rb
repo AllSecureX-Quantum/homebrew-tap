@@ -1,45 +1,49 @@
-# Homebrew formula for QuantumVault SDK.
+# Homebrew formula template for QuantumVault SDK.
 #
-# This file is rendered from the template in the SDK repo
-# (.github/workflows/release.yml renders version + per-arch SHA-256
-# placeholders against the actual release assets). The rendered file
-# lives here in the tap repo so `brew tap allsecurex-quantum/tap`
-# resolves it.
+# This file lives in the SDK repo as the source of truth. On every
+# release the publish job in .github/workflows/release.yml does:
 #
-# Users install with:
+#   1. Substitute the version + per-arch SHA-256 placeholders with the
+#      real values from the released tarballs.
+#   2. Upload the rendered formula as a release asset (`quantumvault.rb`).
+#   3. (Manual today; will automate later) Copy the rendered file into
+#      the `homebrew-tap` repo at `Formula/quantumvault.rb`, commit, push.
+#
+# After tap setup, macOS users install with:
 #
 #   brew tap allsecurex-quantum/tap
 #   brew install quantumvault
 #
-# Apple Silicon and Linux x86_64 are covered. Intel macOS users on
-# linuxbrew install the Linux build.
+# Both Intel and Apple Silicon Macs are covered. Linux x86_64 is also
+# supported by Homebrew on Linux (linuxbrew).
 #
 # Formula style follows the Homebrew best-practice for binary releases
-# (the `binary` audit-style - no Ruby `def install` build steps, just
+# (the `binary` audit-style — no Ruby `def install` build steps, just
 # a `bin.install` of pre-built artefacts from GitHub Releases).
 
 class Quantumvault < Formula
   desc "Post-quantum cryptography toolkit: CA, DNSSEC, S/MIME, archival, ACME, JWT, HSM bridge"
   homepage "https://quantumvault.allsecurex.com"
-  version "1.1.3"
+  version "1.1.4"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.1.3/quantumvault-v1.1.3-aarch64-apple-darwin.tar.gz"
-      sha256 "25540630ffa2d0bf91875bdc1349978cc7166b9fc67720831ccee4f1d5450fb6"
+      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.1.4/quantumvault-v1.1.4-aarch64-apple-darwin.tar.gz"
+      sha256 "de92ab469fbabb14c9e5566835502f307b6c474809bf70c8160aceb183379a64"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.1.3/quantumvault-v1.1.3-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "310d039e38456b605e2c8268dda660c5ffd96cf9bdf8fcad4ba30d165e587f43"
+      url "https://github.com/AllSecureX-Quantum/quantumvault-sdk/releases/download/v1.1.4/quantumvault-v1.1.4-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "fe533a0e92659e9cf7a206784d4a8848f68969572c62f2622d713449b958a276"
     end
   end
 
   def install
-    # Brew cd's into the extracted top-level directory before install runs.
+    # Brew already cd's into the extracted tarball's top-level directory
+    # before running this method, so each binary is just bin.install "name".
     bin.install "quantumvault"
     bin.install "qvca"
     bin.install "qvdnssec"
